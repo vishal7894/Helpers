@@ -394,6 +394,7 @@ def predict_future(X_future, model_path=None, model=None, cutoff=0.5):
     
     prediction_df['prediction'] = y_pred
     prediction_df['probability'] = y_proba
+    prediction_df['CustomerNumber'] = X_future["CustomerNumber"]
     
     return prediction_df
 
@@ -414,4 +415,4 @@ results, best_model_name = train_and_evaluate_multiple_models(
 
 # Make predictions with the best model
 best_model = results[best_model_name]['model']
-# final_predictions = predict_future(X_train, model=best_model, cutoff=0.5)
+final_predictions = predict_future(X_train, model=best_model, cutoff=0.5)
